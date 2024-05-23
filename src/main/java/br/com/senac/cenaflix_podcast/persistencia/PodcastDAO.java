@@ -40,13 +40,13 @@ public class PodcastDAO {
         EntityManager em = JPAUtil.getEntityManager();
         try {
             em.getTransaction().begin();
-            em.persist(p); // breakpoint
+            em.persist(p); 
             em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
             throw e;
         } finally {
-            JPAUtil.closeEtityManager();
+            JPAUtil.closeEtityManager(); // breakpoint
         }
     }
 
@@ -64,9 +64,9 @@ public class PodcastDAO {
             String textoQuery = "SELECT p FROM Podcast p " + " WHERE (:produtor is null OR p.produtor LIKE :produtor ) ";
             Query consulta = em.createQuery(textoQuery); // breakpoint
             consulta.setParameter("produtor", produtorPesquisar.isEmpty() ? null : "%" + produtorPesquisar + "%");
-            podcasts = consulta.getResultList(); //breakpoint
+            podcasts = consulta.getResultList(); 
         } finally {
-            JPAUtil.closeEtityManager();
+            JPAUtil.closeEtityManager(); // breakpoint
         }
         return podcasts;
     }
@@ -79,17 +79,17 @@ public class PodcastDAO {
     public void excluir(int id) {
         EntityManager em = JPAUtil.getEntityManager();
         try {
-            Podcast d = em.find(Podcast.class, id); //breakpoint
+            Podcast d = em.find(Podcast.class, id); 
             if (d != null) {
                 em.getTransaction().begin();
-                em.remove(d); // breakpoint
+                em.remove(d); 
                 em.getTransaction().commit();
             }
         } catch (Exception e) {
             em.getTransaction().rollback();
             throw e;
         } finally {
-            JPAUtil.closeEtityManager();
+            JPAUtil.closeEtityManager(); // breakpoint
         }
     }
 
@@ -102,9 +102,9 @@ public class PodcastDAO {
     public Podcast obter(int id) {
         EntityManager em = JPAUtil.getEntityManager();
         try {
-            return em.find(Podcast.class, id); // breakpoint
+            return em.find(Podcast.class, id); 
         } finally {
-            JPAUtil.closeEtityManager();
+            JPAUtil.closeEtityManager(); // breakpoint
         }
     }
 
@@ -117,13 +117,13 @@ public class PodcastDAO {
         EntityManager em = JPAUtil.getEntityManager();
         try {
             em.getTransaction().begin();
-            em.merge(p); // breakpoint
+            em.merge(p); 
             em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
             throw e;
         } finally {
-            JPAUtil.closeEtityManager();
+            JPAUtil.closeEtityManager(); // breakpoint
         }
     }
 

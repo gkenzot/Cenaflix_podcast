@@ -46,15 +46,12 @@ public class JPAUtil {
     public static EntityManager getEntityManager() {
         if (fabrica == null || !fabrica.isOpen()) {
             fabrica = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT);
-            // breakpoint
         }
         if (em == null || !em.isOpen()) //cria se em nulo ou se o entity manager foi fechado
         {
 
         }
-        // breakpoint
         em = fabrica.createEntityManager();
-        // breakpoint
         return em;
     }
 
@@ -65,7 +62,6 @@ public class JPAUtil {
         if (em.isOpen() && em != null) {
             em.close();
             fabrica.close();
-            // breakpoint
         }
 
     }
